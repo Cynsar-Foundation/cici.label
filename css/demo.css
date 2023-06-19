@@ -199,8 +199,8 @@ a:focus {
 	grid-area: title;
 	font-family: 'nexa_boldregular', sans-serif;
 	letter-spacing: -0.025em;
-	font-size: 8em;
-	line-height: 160px;
+	font-size: 5em;
+	line-height: 100px;
 	margin: 0;
 	text-transform: lowercase;
 	z-index: 10;
