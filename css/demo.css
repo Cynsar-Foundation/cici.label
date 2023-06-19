@@ -170,7 +170,7 @@ a:focus {
 	pointer-events: auto;
 	justify-content: center;
 	align-content: center;
-	grid-template-columns: 150px 150px 150px 150px; 
+	grid-template-columns: 200px 200px 200px 200px; 
 	grid-template-rows: 150px 75px 75px;
 	grid-template-areas:	"... title title title"
 							"author ... desc desc"
@@ -202,6 +202,17 @@ a:focus {
 	font-size: 5em;
 	line-height: 100px;
 	margin: 0;
+	text-transform: lowercase;
+	z-index: 10;
+	cursor: default;
+}
+
+.content__title__last {
+	grid-area: title;
+	font-family: 'nexa_boldregular', sans-serif;
+	letter-spacing: -0.025em;
+	font-size: 5em;
+	line-height: 100px;
 	text-transform: lowercase;
 	z-index: 10;
 	cursor: default;
