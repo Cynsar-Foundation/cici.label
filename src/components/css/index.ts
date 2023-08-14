@@ -1,3 +1,5 @@
+export { Content }from "./content";
+
 export { Button } from "./button";
 export { Card } from "./card";
 export { Cards } from "./cards";

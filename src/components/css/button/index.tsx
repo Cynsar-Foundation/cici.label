@@ -8,14 +8,7 @@ export type IButton = React.DetailedHTMLProps<
 
 export const Button: React.FC<IButton> = ({ children, ...props }) => {
   return (
-    <a
-      {...props}
-      target="_blank"
-      href="https://pankod.github.io/superplate/"
-      rel="noopener noreferrer"
-      className={styles.button}
-    >
-      {children}
+    <a>
     </a>
   );
 };

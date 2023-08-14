@@ -1,21 +1,16 @@
 import React from "react";
 
-import { Cards, Footer, Header, Main } from "@components/css";
+import { Content, Footer, Header } from "@components/css";
+import ContentWrap from "@components/css/content/content";
+import MorphComponent from "@components/css/animation";
+import { Main } from "next/document";
 
 const Home: React.FC = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
+    <main
     >
-      <Header />
-      <Main />
-      <Cards />
-      <Footer />
-    </div>
+      <MorphComponent/>
+    </main>
   );
 };
 

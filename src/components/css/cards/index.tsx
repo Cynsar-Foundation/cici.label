@@ -6,12 +6,6 @@ import styles from "./index.module.css";
 
 export const Cards: React.FC = () => {
   return (
-    <div className={styles.cards}>
-      {(data?.plugins ?? []).map((plugin) => (
-        <div key={`key-${plugin.name}`} className={styles.cardWrapper}>
-          <Card title={plugin.name}>{plugin.description}</Card>
-        </div>
-      ))}
-    </div>
+   <div></div>
   );
 };

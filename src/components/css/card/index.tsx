@@ -8,9 +8,7 @@ type CardProps = {
 
 export const Card: React.FC<CardProps> = ({ title, children }) => {
   return (
-    <div className={styles.card}>
-      <div className={styles.header}>{title}</div>
-      <div>{children}</div>
+    <div>
     </div>
   );
 };
