@@ -501,15 +501,15 @@ a:focus {
 .sidebar {
     position: fixed;
     top: 0;
-    right: -50%;  /* starting off the screen */
-    width: 50%;
-	transform: translateX(100%); 
-	transition: transform 0.3s ease-in-out;
+    right: -80%;
+    width: 60%;
+    transform: translateX(100%); 
+    transition: transform 0.3s ease-in-out;
     height: 100vh;
     background-color: #f9ed8a;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;  /* z-index for the sidebar */
     overflow-y: auto;
-    z-index: 1000;  /* to ensure it's on top */
 }
 
 .sidebar.open {
@@ -545,3 +545,109 @@ a:focus {
     font-size: 16px;
     margin-top: 15px;
 }
+
+
+.centered-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  }
+  
+  .centered-horizontal {
+	margin-left: auto;
+	margin-right: auto;
+  }
+  
+  .horizontal-padding {
+	padding-left: 1rem;  /* 4 * 0.25rem (assuming 1rem = 16px) */
+	padding-right: 1rem;
+  }
+
+  .max-width-2xl {
+	max-width: 42rem;
+  }
+
+  .title-sidebar {
+    font-size: 20px; /* Adjust as needed */
+    text-align: center;
+    margin: 20px 0; /* Some spacing above and below the title */
+	color: #000;
+	
+}
+
+.max-width-2xl {
+	max-width: 42rem;
+  }
+
+.content-on-top {
+    position: relative; /* or absolute, fixed, or sticky */
+    z-index: 2000;  /* z-index higher than the sidebar */
+}
+
+
+/* styles/Footer.css */
+
+.footer {
+    background-color: (--);
+    color: #fff;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ddd;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 0.8em;
+}
+
+
+
+.hero {
+    max-width: 2xl;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.back-icon {
+    padding: 10px;
+    font-size: 20px;
+}
+
+.back-icon a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+

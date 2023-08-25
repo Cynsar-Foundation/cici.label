@@ -8,7 +8,6 @@ export const Header: React.FC = () => {
     <div className="content content--fixed" >
       <Logo />
       <Footer/>
-      
     </div>
   );
 };

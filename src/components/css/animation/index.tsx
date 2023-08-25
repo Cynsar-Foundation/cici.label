@@ -7,6 +7,8 @@ import ContentWrap from '../content/content';
 import { Header } from '../header';
 import { useSelector } from 'react-redux';
 import { RootState } from '@redux/reducers';
+import { Footer } from '../footer';
+import ExtendedFooter from '../footer/extendedFooter';
 
 const MorphComponent = () => {
   const svgRef = useRef(null);
@@ -166,7 +168,7 @@ const MorphComponent = () => {
     
   const getShape = (step:any) => shapes[step];
 
-    const initShapeLoop = (pos = 0) => {
+    const initShapeLoop = (pos: any) => {
         anime.remove(shapeElRef.current);
         anime({
             targets: shapeElRef.current,
@@ -192,6 +194,7 @@ const MorphComponent = () => {
                     const step = entry.target.getAttribute('data-step');
                     setCurrentStep(step);
                     animateShape(step);
+                    initShapeLoop(step);
                 }
             });
         }, { threshold: 0.5 });  // Adjust the threshold as needed
@@ -214,7 +217,12 @@ const MorphComponent = () => {
                 value: getShape(step).fill.color,
                 duration: getShape(step).fill.duration,
                 easing: getShape(step).fill.easing
-            }
+            },
+            scaleX: shapes[step].scaleX,
+            scaleY: shapes[step].scaleY,
+            translateX: shapes[step].tx + 'px',
+            translateY: shapes[step].ty + 'px',
+            rotate: shapes[step].rotate + 'deg'
         });
     };
 
@@ -234,7 +242,7 @@ const MorphComponent = () => {
             translateY: shapes[0].ty + 'px',
             rotate: shapes[0].rotate + 'deg'
         });
-        initShapeLoop();
+        initShapeLoop(0);
     };
     imagesLoaded(document.body, () => {
       initShapeEl();
@@ -253,13 +261,17 @@ const MorphComponent = () => {
   return (
     <>
       <div className="morph-wrap">
-            <svg ref={svgRef} className="morph" viewBox="0 0 1400 800"> {/* Adjust viewBox as needed */}
+            <svg ref={svgRef} className="morph" width={'1400'} height={'770'} viewBox="0 0 1400 800"> {/* Adjust viewBox as needed */}
                 <path ref={shapeElRef} d={shapes[0].path} fill={shapes[0].fill.color}></path>
             </svg>
         </div>
         <Header></Header>
 
         <ContentWrap/>
+
+        
+        <ExtendedFooter/>
+
     </>
   );
 };

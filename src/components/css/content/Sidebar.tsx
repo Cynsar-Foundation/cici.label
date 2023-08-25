@@ -55,9 +55,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,title, subtitl
     return (
         <div ref={sidebarRef} className={`content-wrap sidebar ${isOpen ? 'open' : ''}`}>
             {/* Your sidebar content */}
-            <h2 className="sidebar__title">{title}</h2>
+            <h2 className="title-sidebar max-width-2xl">{content}</h2>
             <h3 className="sidebar__subtitle">{subtitle}</h3>
-            <p className="sidebar__content">{content}</p>
         </div>
     );
 };

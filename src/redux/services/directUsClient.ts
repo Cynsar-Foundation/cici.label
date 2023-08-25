@@ -1,6 +1,13 @@
 import { ContentData } from "@components/css/content/content";
 import { createDirectus, readItem, readItems } from "@directus/sdk";
 import { rest } from '@directus/sdk';
+
+export type SideBarData = {
+  title: string,
+  subtitle: string,
+  para: string,
+  content: string
+}
 let url = "";
 
 if (process.env.NODE_ENV === "production") {
@@ -23,5 +30,10 @@ export const getContentData = async (): Promise<ContentData[]> => {
   const response = await directus.request(readItems('front_matter'));
   return response;
 };
+
+export const getSidebarData = async (ID: number): Promise<SideBarData[]> => {
+  const response = await directus.request(readItem('contentData', ID))
+  return response
+}
 
 export default directus;
