@@ -17,7 +17,7 @@ export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, l
     return (
         <div className='content-wrap'>
             <div className={`content content--layout content--layout-${layoutType}`}>
-                <img className="content__img" src={`https://directus-bucket-jy.s3.us-east-1.amazonaws.com/${imageAWSs3}.jpeg`} alt="Some image" />
+                <img className="content__img" src={`https://directus-bucket-jy.s3.us-east-1.amazonaws.com/${imageAWSs3}.jpg`} alt="Some image" />
                 <h3 className="content__title">{title}</h3>
                 <p className="content__author">{author}</p>
                 <p className="content__desc">{desc}</p>
