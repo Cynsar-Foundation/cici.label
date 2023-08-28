@@ -59,7 +59,7 @@ const ContentWrap: React.FC = () => {
             onClose={handleSidebarClose} 
             title={sidebarData.title} 
             subtitle={sidebarData.subTitle} 
-            paragraph={sidebarData.para}
+            paragraph={sidebarData.paragraph}
             content={sidebarData.content}/>
         </>
     );
