@@ -16,10 +16,23 @@ const directusSlice = createSlice({
     name: 'directus',
     initialState: {
         title: '',
-        contentData: [],
-        sideBarData: {},
+        contentData: [
+            {
+                imgSrc: '',
+                title: '',
+                author: '',
+                desc: '',
+                imageAWSs3: ''
+            }
+        ],
+        sideBarData: {
+            title:'',
+            subTitle:'',
+            paragraph:'',
+            content:''
+        },
         status: 'idle',
-        error: null
+        error: ''
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -33,29 +46,29 @@ const directusSlice = createSlice({
             })
             .addCase(fetchTitle.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error = action.error.message as string;
             })
             .addCase(fetchContentData.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(fetchContentData.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.contentData = action.payload;
+                state.contentData = action.payload as ContentData[];
             })
             .addCase(fetchContentData.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error = action.error.message as string
             })
             .addCase(fetchSidebarData.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(fetchSidebarData.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.sideBarData = action.payload;
+                state.sideBarData = action.payload as unknown as SideBarData;
             })
             .addCase(fetchSidebarData.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error = action.error.message as string;
             });
     }
 });

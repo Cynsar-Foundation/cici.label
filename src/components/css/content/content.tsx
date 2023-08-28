@@ -13,6 +13,7 @@ export type ContentData = {
     title: string;
     author: string;
     desc: string;
+    imageAWSs3: string;
 };
 
 const ContentWrap: React.FC = () => {
@@ -51,14 +52,14 @@ const ContentWrap: React.FC = () => {
     };
     return (
         <>
-           {contentData.map((item, index) => (
+           {contentData.map((item: any, index) => (
                 <Content onDiscoverClick={() => handleDiscoverClick(item)} key={index} {...item} />
             ))}
             <Sidebar isOpen={isOpen} 
             onClose={handleSidebarClose} 
             title={sidebarData.title} 
-            subtitle={sidebarData.subtitle} 
-            paragraph="Your detailed content paragraph goes here."
+            subtitle={sidebarData.subTitle} 
+            paragraph={sidebarData.para}
             content={sidebarData.content}/>
         </>
     );

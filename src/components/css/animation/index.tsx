@@ -191,8 +191,9 @@ const MorphComponent = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const step = entry.target.getAttribute('data-step');
-                    setCurrentStep(step);
+                    const step = entry.target.getAttribute('data-step') as string;
+                    const stepToNum: number = +step;
+                    setCurrentStep(stepToNum);
                     animateShape(step);
                     initShapeLoop(step);
                 }
