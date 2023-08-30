@@ -1,11 +1,12 @@
 import { fetchTitle } from "@redux/directUsActions";
+import { RootState } from "@redux/reducers";
 import Image from "next/image";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Logo: React.FC = () => {
 
-  const title = useSelector((state: any) => state.directUs.title);
+  const title = useSelector((state: RootState) => state.directUs.websiteData);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -6,8 +6,6 @@ import { Content } from '.';
 import { Sidebar } from './Sidebar';
 
 
-import styles from './content.module.css'
-
 export type ContentData = {
     imgSrc: string;
     title: string;

@@ -5,11 +5,15 @@ import "@styles/normalize.css";
 import "@styles/global.css";
 import { AppProps } from "next/app";
 import { Component, useEffect } from "react";
-import { Provider } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { RootState } from "@redux/reducers";
+import { fetchMetaData } from "@redux/directUsActions";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   
   const ComponentWithAPICheck = WithAPICheck(Component, process.env.NEXT_PUBLIC_API_URL);
+
   useEffect(() => {
     // Add the class when the component mounts
     document.body.classList.add('demo-2');
@@ -21,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 }, []); // Empty dependency array ensures this effect runs once when component mounts and once when it unmounts
 
   return (
-    
+<>
     <ApiStatusProvider>
         <Provider store={store}>
         <ComponentWithAPICheck {...pageProps}>
@@ -29,8 +33,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
          </ComponentWithAPICheck>
         </Provider>
         </ApiStatusProvider>
+
+  </>
    
   );
 }
+
 
 export default MyApp;

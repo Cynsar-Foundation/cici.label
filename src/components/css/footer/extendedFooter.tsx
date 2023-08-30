@@ -1,5 +1,6 @@
 // components/Footer.jsx
 
+import Link from 'next/link';
 import React from 'react';
 import styles from './index.module.css';
 
@@ -8,7 +9,7 @@ const ExtendedFooter = () => {
         <footer className="footer">
             <div className="footer-links">
                 <a href="https://shop.cicilabel.com" target="_blank" rel="noopener noreferrer">Shop</a>
-                <a href="/about">About Us</a>
+                <Link href="/about">About Us</Link>
                 <a href="https://stories.cynsar.foundation">Stories</a>
                 <a href="https://shop.cicilabel.com/contact/">Contact</a>
                 <a href="https://shop.cicilabel.com/terms">Terms & Conditions</a>

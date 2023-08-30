@@ -13,5 +13,9 @@ export const fetchSidebarData = createAsyncThunk('directus/fetchSidebarData', as
     return await directusService.getSidebarData(id);
 })
 
+export const fetchMetaData = createAsyncThunk('directus/fetchMetaData', async (id: number) => {
+    return await directusService.getMetaData(id);
+})
+
 
 
