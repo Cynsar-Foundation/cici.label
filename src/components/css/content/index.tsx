@@ -1,6 +1,7 @@
 import { useSpring, animated } from '@react-spring/web';
 import React, { useState } from 'react';
 
+const isLocalDevelopment = process.env.NEXT_PUBLIC_IS_LOCAL === 'true';
 
 type ContentProps = {
     imgSrc: string;
@@ -12,30 +13,30 @@ type ContentProps = {
     onDiscoverClick: () => void;
 };
 
-export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, layoutType, imageAWSs3,onDiscoverClick }) => {
+export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, layoutType, imageAWSs3, onDiscoverClick }) => {
+
+    const imageUrl = isLocalDevelopment ? imgSrc : `https://directus-bucket-jy.s3.us-east-1.amazonaws.com/${imageAWSs3}.jpg`;
     
-    const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [isImageLoaded, setImageLoaded] = useState(false);
     const fadeIn = useSpring({
         opacity: isImageLoaded ? 1 : 0
     });
+
     return (
         <div className='content-wrap'>
             <div className={`content content--layout content--layout-${layoutType}`}>
-            {imageAWSs3 ? (
-                    <>
-                        {!isImageLoaded && (
-                            <div className="spinner"></div> // This will be your spinner
-                        )}
-                        <animated.img 
-                            style={fadeIn}
-                            className="content__img" 
-                            src={`https://directus-bucket-jy.s3.us-east-1.amazonaws.com/${imageAWSs3}.jpg`} 
-                            alt="Some image" 
-                            onLoad={() => setImageLoaded(true)}
-                        />
-                    </>
-                ) : null}
+                <>
+                    {!isImageLoaded && (
+                        <div className="spinner"></div> // This will be your spinner
+                    )}
+                    <animated.img 
+                        style={fadeIn}
+                        className="content__img" 
+                        src={imageUrl} 
+                        alt="Some image" 
+                        onLoad={() => setImageLoaded(true)}
+                    />
+                </>
                 <h3 className="content__title">{title}</h3>
                 <p className="content__author">{author}</p>
                 <p className="content__desc">{desc}</p>
@@ -59,4 +60,3 @@ export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, l
         </div>
     );
 };
-
