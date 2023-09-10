@@ -4,11 +4,10 @@ import store from "@redux/store";
 import "@styles/normalize.css";
 import "@styles/global.css";
 import { AppProps } from "next/app";
-import { Component, useEffect } from "react";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import { RootState } from "@redux/reducers";
-import { fetchMetaData } from "@redux/directUsActions";
-import Head from "next/head";
+import {  useEffect } from "react";
+import { Provider } from "react-redux";
+
+import AnalyticsComponent from "@components/css/header/analytics";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   
@@ -28,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 <>
     <ApiStatusProvider>
         <Provider store={store}>
+        <AnalyticsComponent/>
         <ComponentWithAPICheck {...pageProps}>
           <Component {...pageProps} />
          </ComponentWithAPICheck>

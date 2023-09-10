@@ -66,17 +66,23 @@ const useTiltObj = (el: any, options: any) => {
     
             const imgElement = el.querySelector(".content__img");
             const titleElement = el.querySelector(".content__title");
-    
-            imgElement.style.WebkitTransform = imgElement.style.transform = `translateX(${transforms.img.x}px) translateY(${transforms.img.y}px)`;
-            titleElement.style.WebkitTransform = titleElement.style.transform = `translateX(${transforms.title.x}px) translateY(${transforms.title.y}px)`;
+
+            if (imgElement) {
+              imgElement.style.WebkitTransform = imgElement.style.transform = `translateX(${transforms.img.x}px) translateY(${transforms.img.y}px)`;
+          }
+  
+          if (titleElement) {
+              titleElement.style.WebkitTransform = titleElement.style.transform = `translateX(${transforms.title.x}px) translateY(${transforms.title.y}px)`;
+          }
         });
     };
     
 
     const mouseLeaveFn = (ev: any) => {
       requestAnimationFrame(() => {
+        const validTargets = [DOM.img, DOM.title].filter(Boolean);
         anime({
-          targets: [DOM.img, DOM.title],
+          targets: [validTargets],
           duration: 1500,
           easing: "easeOutElastic",
           elasticity: 400,
