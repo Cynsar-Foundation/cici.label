@@ -9,9 +9,10 @@ type SidebarProps = {
     subtitle: string;
     paragraph: string;
     content: string; // you can replace this with any type of content you want
+    status: string;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,title, subtitle, paragraph, content }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,title, subtitle, paragraph, content, status }) => {
     const sidebarRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
@@ -54,9 +55,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,title, subtitl
 
     return (
         <div ref={sidebarRef} className={`content-wrap sidebar ${isOpen ? 'open' : ''}`}>
-            {/* Your sidebar content */}
-            <h2 className="title-sidebar max-width-2xl">{content}</h2>
-            <h3 className="sidebar__subtitle">{subtitle}</h3>
+            {status === 'loading' && isOpen ? (
+                <div className="loader">Loading...</div>
+            ) : (
+                <>
+                    <h2 className="title-sidebar max-width-2xl">{content}</h2>
+                    <h3 className="sidebar__subtitle">{subtitle}</h3>
+                </>
+            )}
         </div>
     );
 };

@@ -49,10 +49,6 @@ const ContentWrap: React.FC = () => {
         setIsOpen(false); // Close the sidebar when outside is clicked
     };
 
-    if (status === 'loading') {
-        return <div className="loader">Loading...</div>; // This is your loader. You can style it or use a spinner.
-    }
-
     return (
         <>
            {contentData.map((item: any, index) => (
@@ -63,7 +59,8 @@ const ContentWrap: React.FC = () => {
             title={sidebarData.title} 
             subtitle={sidebarData.subTitle} 
             paragraph={sidebarData.paragraph}
-            content={sidebarData.content}/>
+            content={sidebarData.content}
+            status={status}/>
         </>
     );
 };

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { setLocalStorageItem, getLocalStorageItem } from '@components/utils/localStorage'; // Import utility functions
+import { useRouter } from 'next/router';
 
 const UserObservationComponent = () => {
   const [timeSpent, setTimeSpent] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
+  const router = useRouter();
 
   const applyBlur = (blurValue: string) => {
     const mainContent = document.querySelector('main');
@@ -64,6 +66,10 @@ const UserObservationComponent = () => {
     setShowMessage(false);
     applyBlur('none');
     setLocalStorageItem('userClicked', true); // Record user click
+    if (typeof window !== 'undefined') {
+      // Redirect the user to the specified URL
+      router.push('https://shop.cicilabel.com');
+  }
   };
 
   return (
@@ -73,7 +79,7 @@ const UserObservationComponent = () => {
           <div style={{ color: 'white', textAlign: 'center', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 10000 }}>
             <h1>Looks like you like enjoying what we are doing?</h1>
             <h2>Lets start a relationship?</h2>
-            <button className='nice-button' onClick={handleClose}>Oh Yeah</button>
+            <button className='nice-button' onClick={handleClose}>Take me to the shop</button>
           </div>
         </div>
       )}
