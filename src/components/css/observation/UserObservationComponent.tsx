@@ -69,7 +69,7 @@ const UserObservationComponent = () => {
     if (typeof window !== 'undefined') {
       // Redirect the user to the specified URL
       router.push('https://shop.cicilabel.com');
-  }
+  } 
   };
 
   return (
