@@ -7,6 +7,7 @@ import { Sidebar } from './Sidebar';
 
 
 export type ContentData = {
+    id: number;
     imgSrc: string;
     title: string;
     author: string;
@@ -25,11 +26,7 @@ const ContentWrap: React.FC = () => {
     useEffect(() => {
         // Fetch the data from an API or receive it as props
         // For demonstration purposes, I'm using hardcoded data:
-        
         dispatch(fetchContentData())
-
-        
-
         if (status === 'loading') {
             document.body.classList.add('js', 'loading');
         } else {
@@ -45,13 +42,17 @@ const ContentWrap: React.FC = () => {
         setIsOpen(true);  // Open the sidebar when the Discover button is clicked
     };
 
+    const sortedContentData = React.useMemo(() => {
+        return [...contentData].sort((a, b) => a.id - b.id);
+    }, [contentData]);
+
     const handleSidebarClose = () => {
         setIsOpen(false); // Close the sidebar when outside is clicked
     };
 
     return (
         <>
-           {contentData.map((item: any, index) => (
+           {sortedContentData.map((item: any, index) => (
                 <Content onDiscoverClick={() => handleDiscoverClick(item)} key={index} {...item} />
             ))}
             <Sidebar isOpen={isOpen} 

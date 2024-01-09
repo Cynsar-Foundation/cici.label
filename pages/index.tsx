@@ -7,40 +7,51 @@ import { fetchMetaData } from "@redux/directUsActions";
 import MetaHead from "@components/css/meta/MetaComponent";
 import {  animated, useSpring } from "@react-spring/web";
 import UserObservationComponent from "@components/css/observation/UserObservationComponent";
+import {  getMetaData, getWebsiteTitleAndFooter } from "@redux/services/directUsClient";
 
 
-const Home: React.FC = () => {
+interface TagType {
+  item: {
+    page: string;
+    // other properties of 'item'
+  };
+  // other properties of 'TagType'
+}
+export async function getServerSideProps(context: any) {
+  // Fetch the meta tag dat
+  const website = await getWebsiteTitleAndFooter();
+  const websiteData: any = await  getMetaData(website[0].id)
+  let tags = websiteData ? websiteData.find((tag: TagType) => tag.item.page === 'index') : null;
+  return {
+    props: {
+      tags,
+    },
+  };
+}
+
+
+
+const Home = ({ tags }: any) => {
 
   const router = useRouter();
-  const dispatch = useDispatch();
-  const websiteData = useSelector((state: RootState) => state.directUs.websiteData)
-
-  const metaTags  = useSelector((state: RootState) => state.directUs.metaData);
-
   const { sourceType, advertType } = router.query;
   
   useEffect(() => {
-    // Check if websiteData.id exists and websiteData.metaData is an array
-    if (websiteData && websiteData.id && Array.isArray(websiteData.metaData)) {
-      dispatch(fetchMetaData(websiteData.id));
-    }
-
-  }, [dispatch, websiteData]);
-
-  useEffect(() => {
     if (sourceType) {
-      console.log(`User arrived from: ${sourceType} and advertType ${advertType}`);
-      // Send to analytics or do other tasks...
     }
   }, [sourceType, advertType]);
+  let indexMetaTag
 
-  const indexMetaTag = metaTags ? metaTags.find(tag => tag.item.page === 'index') : null;
+  if (tags){
+    indexMetaTag = tags
+  }
+
 
   const springProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
   });
-
+  
 
 
   return (

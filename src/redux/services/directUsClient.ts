@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === "production") {
   url = process.env.NEXT_PUBLIC_API_URL as string;
 } else {
   // Set the local URL
-  url = "http://localhost:8055/";
+  url = "https://api.cynsar.capital/";
 }
 
 const directus = createDirectus(url).with(rest());

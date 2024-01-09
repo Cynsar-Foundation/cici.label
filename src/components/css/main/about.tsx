@@ -2,7 +2,7 @@ import React from 'react';
 import { animated, useTransition } from '@react-spring/web';
 import Link from 'next/link';
 
-const DownComponent = () => {
+const AboutComponent = () => {
     
     const transitions = useTransition(true, {
         from: { opacity: 0, transform: 'translate3d(100%,0,0)' },  // Start from the right
@@ -19,11 +19,11 @@ const DownComponent = () => {
         <animated.div style={style}>
             <div className="hero">
             <div className="back-icon">
-                <Link href="/">← Nowhere to go </Link>    
+                <Link href="/">← Back to home page </Link>    
                 </div>
-            <h1>We are shutting down</h1>
+                <h1>Our Inception</h1>
             <p>
-                In next few weeks , we will be winding up , resolving company, etc and 
+                Our inception as a business hinged upon an experiment: a philosophical exploration of fabric sourcing from the multifarious locales of India. At the time, handloom was a term thrown around rather loosely, usually serving as decorative facades in ostentatious storefronts. However, our curiosity went beyond the superficial veneer of this industry; we wanted to dig deep into the heart of the handloom segment, interacting with the very weavers who wove tales of their lives into each thread.
             </p>
             <p>
                 It was Sham who navigated through the hinterlands of West Bengal, sourcing fabrics imbued with narratives that could only be spun by the delicate hands of artisans rooted in the land. Meanwhile, my role was anchored in the gruelling mechanics of logistics, facilitating the transportation and warehousing of these precious bundles. And then there was Cici, embodying the spirit of our cause, she was our torchbearer, testing and providing feedback on the quality of our fabrics, while ensuring our vision always remained intact.
@@ -34,9 +34,6 @@ const DownComponent = () => {
             <p>
                 Thus, when you peruse through our offerings, know that you aren't merely a customer but a participant in an intimate personal space. This is a space where you're invited to delve into the authentic world of handloom, a space where the experiences aren't mass-produced, but carefully curated to resonate with the rich tapestry of tales that our fabrics embody. We aim to offer you a glimpse of the diverse weaving traditions, not just from India, but from around the world, each a testament to the universality and uniqueness of human culture.
             </p>
-            <p>
-                So, after all this experiences and experiment , keep on living and creating new wonderful ideas.
-            </p>
         </div>
 
         </animated.div>
@@ -44,4 +41,4 @@ const DownComponent = () => {
     );
 }
 
-export default DownComponent;
+export default AboutComponent;

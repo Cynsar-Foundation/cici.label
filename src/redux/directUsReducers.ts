@@ -35,6 +35,7 @@ const directusSlice = createSlice({
         },
         contentData: [
             {
+                id: 0,
                 imgSrc: '',
                 title: '',
                 author: '',

@@ -1,5 +1,4 @@
 import DownComponent from "@components/css/main/about";
-import AboutComponent from "@components/css/main/about";
 import MetaHead from "@components/css/meta/MetaComponent";
 import { RootState } from "@redux/reducers";
 import {  useSelector } from "react-redux";
