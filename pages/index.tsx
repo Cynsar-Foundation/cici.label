@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { Component, useEffect } from "react";
 import MorphComponent from "@components/css/animation";
 import { useRouter } from "next/router";
 import MetaHead from "@components/css/meta/MetaComponent";
 import {  animated, useSpring } from "@react-spring/web";
 import UserObservationComponent from "@components/css/observation/UserObservationComponent";
 import {  getMetaData, getWebsiteTitleAndFooter } from "@redux/services/directUsClient";
+import { useApiStatus } from "@components/context/ApiStatusContext";
+import WithAPICheck from "@components/css/withAPICheck/withApiCheck";
 
 
 interface TagType {
@@ -29,14 +31,12 @@ export async function getServerSideProps(context: any) {
 
 
 const Home = ({ tags }: any) => {
-
+  const { apiStatus, setApiStatus } = useApiStatus();
+  
   const router = useRouter();
   const { sourceType, advertType } = router.query;
-  
-  useEffect(() => {
-    if (sourceType) {
-    }
-  }, [sourceType, advertType]);
+
+
 
   const springProps = useSpring({
     from: { opacity: 0 },
@@ -46,6 +46,7 @@ const Home = ({ tags }: any) => {
 
   return (
     <>
+
     <MetaHead metaData={tags.item} />
     <main>
     <animated.main style={springProps}>
@@ -53,8 +54,8 @@ const Home = ({ tags }: any) => {
     </animated.main>
     </main>
     <UserObservationComponent/>
-    </>
+      </>
   );
 };
 
-export default Home;
+export default WithAPICheck(Home, process.env.NEXT_PUBLIC_API_URL);

@@ -10,8 +10,6 @@ import { Provider } from "react-redux";
 import AnalyticsComponent from "@components/css/header/analytics";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  
-  const ComponentWithAPICheck = WithAPICheck(Component, process.env.NEXT_PUBLIC_API_URL);
 
   useEffect(() => {
     // Add the class when the component mounts
@@ -28,9 +26,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <ApiStatusProvider>
         <Provider store={store}>
         <AnalyticsComponent/>
-        <ComponentWithAPICheck {...pageProps}>
           <Component {...pageProps} />
-         </ComponentWithAPICheck>
         </Provider>
       </ApiStatusProvider>
 
