@@ -7,7 +7,11 @@ export async function middleware(req: NextRequest   ) {
   const down = await get('down');
   // NextResponse.json requires at least Next v13.1 or
   // enabling experimental.allowMiddlewareResponseBody in next.config.js
-  const message = await get('message')
-  req.nextUrl.pathname = `/down`;
-  return NextResponse.rewrite(req.nextUrl)
+  if (down){
+    req.nextUrl.pathname = `/down`;
+    return NextResponse.rewrite(req.nextUrl)
+  }
+
+  return NextResponse.next()
+  
 }
