@@ -7,19 +7,20 @@ const WithAPICheck = <P extends object>(WrappedComponent: ComponentType<P>, apiU
     const { apiStatus, setApiStatus } = useApiStatus();
     
     useEffect(() => {
-      const fetchData = async () => {
-        if (apiStatus !== null) return;  // Avoid fetching if we already have a status
-
-        try {
-          const result = await checkAPI(apiUrl);
-          setApiStatus(result);
-        } catch (error) {
-          console.error("Error fetching API status:", error);
-          setApiStatus(false);
-        }
-      };
-
-      fetchData();
+      if (typeof window !== "undefined" && apiStatus === null) {
+        const fetchData = async () => {
+          if (apiStatus !== null) return;  // Avoid fetching if we already have a status
+  
+          try {
+            const result = await checkAPI(apiUrl);
+            setApiStatus(result);
+          } catch (error) {
+            console.error("Error fetching API status:", error);
+            setApiStatus(false);
+          }
+        };
+        fetchData();
+      }
     }, [apiUrl, apiStatus, setApiStatus]);
 
     if (apiStatus === null) {

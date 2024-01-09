@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import MorphComponent from "@components/css/animation";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@redux/reducers";
-import { fetchMetaData } from "@redux/directUsActions";
 import MetaHead from "@components/css/meta/MetaComponent";
 import {  animated, useSpring } from "@react-spring/web";
 import UserObservationComponent from "@components/css/observation/UserObservationComponent";
@@ -40,25 +37,18 @@ const Home = ({ tags }: any) => {
     if (sourceType) {
     }
   }, [sourceType, advertType]);
-  let indexMetaTag
-
-  if (tags){
-    indexMetaTag = tags
-  }
-
 
   const springProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
   });
-  
 
 
   return (
     <>
+    <MetaHead metaData={tags.item} />
     <main>
-      <animated.main style={springProps}>
-      {indexMetaTag && indexMetaTag.item.page === 'index' && <MetaHead metaData={indexMetaTag.item} />}
+    <animated.main style={springProps}>
       <MorphComponent />
     </animated.main>
     </main>
