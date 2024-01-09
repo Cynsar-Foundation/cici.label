@@ -31,13 +31,8 @@ export async function getServerSideProps(context: any) {
 
 
 const Home = ({ tags }: any) => {
-  const { apiStatus, setApiStatus } = useApiStatus();
-  
-  const router = useRouter();
-  const { sourceType, advertType } = router.query;
-
-
-
+  // Later we fix the code for analytics
+  const { apiStatus } = useApiStatus();
   const springProps = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -46,15 +41,20 @@ const Home = ({ tags }: any) => {
 
   return (
     <>
-
-    <MetaHead metaData={tags.item} />
-    <main>
-    <animated.main style={springProps}>
-      <MorphComponent />
-    </animated.main>
-    </main>
-    <UserObservationComponent/>
-      </>
+      <MetaHead metaData={tags.item} />
+      <main>
+        <animated.main style={springProps}>
+          {apiStatus === null && <div className='centered-content'>Loading...</div>}
+          {!apiStatus && (
+            <div className='centered-content centered-horizontal horizontal-padding max-width-2xl'>
+              Error: Unable to connect to the API.
+            </div>
+          )}
+          {apiStatus && <MorphComponent />}
+        </animated.main>
+      </main>
+      <UserObservationComponent/>
+    </>
   );
 };
 

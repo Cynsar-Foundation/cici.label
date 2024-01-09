@@ -27,15 +27,9 @@ export async function getServerSideProps(context: any) {
 
 
 const About = ({tags}: any) => {
-  let indexMetaTag;
-  if (tags){
-    console.log(tags)
-    indexMetaTag = tags
-  }
-
     return (
       <>
-        {indexMetaTag && indexMetaTag.item.page === 'about' && <MetaHead metaData={indexMetaTag.item} />}
+        <MetaHead metaData={tags.item} />
         <AboutComponent/>
         <ExtendedFooter/>
       </>

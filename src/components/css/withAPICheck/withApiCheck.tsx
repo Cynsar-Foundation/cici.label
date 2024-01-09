@@ -23,18 +23,6 @@ const WithAPICheck = <P extends object>(WrappedComponent: ComponentType<P>, apiU
       }
     }, [apiUrl, apiStatus, setApiStatus]);
 
-    if (apiStatus === null) {
-      return <div className='centered-content'>Loading...</div>;
-    }
-
-    if (!apiStatus) {
-      return (
-        <div className='centered-content centered-horizontal horizontal-padding max-width-2xl'>
-          Error: Unable to connect to the API. So you know, API is such a boring word, we are just unable to work out something that should display the content.
-        </div>
-      );
-    }
-
     return <WrappedComponent {...props} />;
   };
 };
