@@ -1,4 +1,4 @@
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import {  createAsyncThunk } from '@reduxjs/toolkit';
 import * as directusService from './services/directUsClient';
 
 export const fetchTitle = createAsyncThunk('directus/fetchTitle', async () => {

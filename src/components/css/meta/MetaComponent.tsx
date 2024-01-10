@@ -10,7 +10,9 @@ export type MetaDataProps = {
     image: string;
     url: string;
     type: string;
-    favicon: string;
+    favicon: {
+      url: string;
+    }
     page: string;
   };
 };
@@ -27,7 +29,7 @@ const MetaHead: React.FC<MetaDataProps> = ({ metaData }) => {
       <meta property="og:image" content={metaData.image} />
       <meta property="og:url" content={metaData.url} />
       <meta property="og:type" content={metaData.type} />
-      <link rel="icon" href={metaData.favicon} />
+      <link rel="icon" href={metaData.favicon.url} />
       <meta name="page" content={metaData.page} />
     </Head>
   );

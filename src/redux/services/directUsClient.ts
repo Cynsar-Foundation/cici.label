@@ -49,7 +49,9 @@ export const getWebsiteTitleAndFooter = async (): Promise<WebsiteData[]> => {
 };
 
 export const getContentData = async (): Promise<ContentData[]> => {
-  const response:ContentData[] = await directus.request<ContentData[]>(readItems('front_matter'));
+  const response:ContentData[] = await directus.request<ContentData[]>(readItems('front_matter',{
+    fields: ['*,imageAWSs3.filename_disk']
+  }));
   return response;
 };
 
@@ -61,7 +63,7 @@ export const getSidebarData = async (ID: number): Promise<SideBarData> => {
 export const getMetaData = async (id: number): Promise<MetaData> => {
   // Fetch metadata for a specific website ID
   const response:any = await directus.request<any>(readItem('website', id, {
-    fields: ['metaData.item.*']
+    fields: ['metaData.item.*', 'metaData.item.favicon.filename_disk']
   }));
 
   return response.metaData;

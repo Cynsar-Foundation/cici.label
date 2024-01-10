@@ -2,6 +2,7 @@ import { useSpring, animated } from '@react-spring/web';
 import React, { useState } from 'react';
 
 const isLocalDevelopment = process.env.NEXT_PUBLIC_IS_LOCAL === 'true';
+const awsS3Url = process.env.NEXT_PUBLIC_AWS_S3;
 
 type ContentProps = {
     imgSrc: string;
@@ -9,13 +10,15 @@ type ContentProps = {
     author: string;
     desc: string;
     layoutType: number;
-    imageAWSs3?: string;
+    imageAWSs3?: {
+        filename_disk: string;
+    }
     onDiscoverClick: () => void;
 };
 
 export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, layoutType, imageAWSs3, onDiscoverClick }) => {
 
-    const imageUrl = isLocalDevelopment ? imgSrc : (imageAWSs3 ? `https://directus-bucket-jy.s3.us-east-1.amazonaws.com/${imageAWSs3}.jpg` : undefined);
+    const imageUrl = isLocalDevelopment ? imgSrc : (imageAWSs3 ? `${awsS3Url}/${imageAWSs3.filename_disk}` : undefined);
     
     const [isImageLoaded, setImageLoaded] = useState(false);
     const fadeIn = useSpring({
