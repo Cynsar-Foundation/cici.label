@@ -297,7 +297,7 @@ a:focus {
 }
 /* Different layouts */
 
-/* layout-2
+layout-2
 .content--layout-2 {
 	grid-template-areas:	"... title title title"
 							"desc desc ... author"
@@ -323,7 +323,7 @@ a:focus {
 }
 
 /* layout-3 */
-/* .content--layout-3 {
+.content--layout-3 {
 	grid-template-rows: 75px 75px 150px;
 	grid-template-areas:	"... ... desc desc"
 							"author title title title"
@@ -341,7 +341,7 @@ a:focus {
 
 /* layout-4 */
 
-/* .content--layout-4 {
+.content--layout-4 {
 	grid-template-areas:	"title title title desc"
 							"... author ... desc"
 							"... author ... link";
@@ -355,7 +355,7 @@ a:focus {
 .content--layout-4 .content__author {
 	justify-self: start;
 	align-self: start;
-} */ */ */
+}
 
 /* Header */
 .codrops-header {
