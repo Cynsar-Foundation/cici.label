@@ -6,12 +6,11 @@
 	src: url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.woff2') format('woff2'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.woff') format('woff'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.ttf') format('truetype'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.svg#nexa_boldregular') format('svg');
 }
 
-*,
-*::after,
-*::before {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 
 :root {
     --background-color: #363dc2; /* This is just an example value */
@@ -171,15 +170,16 @@ a:focus {
 }
 
 .content--layout {
-	pointer-events: auto;
-	justify-content: center;
-	align-content: center;
-	grid-template-columns: 200px 200px 200px 200px; 
-	grid-template-rows: 150px 75px 75px;
-	grid-template-areas:	"... title title title"
-							"author ... desc desc"
-							"author ... link link";
+    display: grid;
+    gap: 1rem; /* Spacing between grid items */
+    grid-template-areas: 
+        "image title"
+        "image author"
+        "image desc"
+        "image link";
+    grid-template-columns: 1fr 2fr; /* Example column sizes */
 }
+
 
 .content--related {
 	text-align: center;
@@ -197,6 +197,7 @@ a:focus {
 	opacity: 0.8;
 	width: 300px;
 	height: 300px;
+	grid-area: image;
 }
 
 .content__title {
@@ -283,9 +284,20 @@ a:focus {
 	padding: 0.5em;
 }
 
+@media (max-width: 768px) {
+    .content--layout {
+        grid-template-areas:
+            "image"
+            "title"
+            "author"
+            "desc"
+            "link";
+        grid-template-columns: 1fr; /* Stack elements on smaller screens */
+    }
+}
 /* Different layouts */
 
-/* layout-2 */
+/* layout-2
 .content--layout-2 {
 	grid-template-areas:	"... title title title"
 							"desc desc ... author"
@@ -311,7 +323,7 @@ a:focus {
 }
 
 /* layout-3 */
-.content--layout-3 {
+/* .content--layout-3 {
 	grid-template-rows: 75px 75px 150px;
 	grid-template-areas:	"... ... desc desc"
 							"author title title title"
@@ -329,7 +341,7 @@ a:focus {
 
 /* layout-4 */
 
-.content--layout-4 {
+/* .content--layout-4 {
 	grid-template-areas:	"title title title desc"
 							"... author ... desc"
 							"... author ... link";
@@ -343,7 +355,7 @@ a:focus {
 .content--layout-4 .content__author {
 	justify-self: start;
 	align-self: start;
-}
+} */ */ */
 
 /* Header */
 .codrops-header {
@@ -671,3 +683,67 @@ a:focus {
 	color: #000;
 	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   }
+
+
+
+  @media screen and (max-width: 768px) {
+    .content-wrap {
+        flex-direction: column;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content--fixed {
+        grid-template-columns: 1fr; /* Adjust layout for smaller screens */
+        padding: 1em;
+    }
+
+    .content--layout {
+        grid-template-columns: 1fr; /* Adjust layout for smaller screens */
+    }
+
+    /* Adjust font sizes and element sizes as needed */
+    .content__title, .content__title__last {
+        font-size: 2.5em;
+        line-height: 1.2;
+    }
+
+    .content__author, .content__desc, .content__link {
+        font-size: 1em;
+    }
+
+    .codrops-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .deco--title, .demos {
+        display: none; /* Hide or adjust elements not needed or not fitting on small screens */
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    .content__title, .content__title__last {
+        font-size: 1.8em;
+    }
+
+    /* Additional responsive adjustments as needed */
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+    }
+}
+
