@@ -6,11 +6,12 @@
 	src: url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.woff2') format('woff2'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.woff') format('woff'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.ttf') format('truetype'), url('../fonts/nexa_boldfree_macroman/Nexa_Free_Bold-webfont.svg#nexa_boldregular') format('svg');
 }
 
-*, *::before, *::after {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
-
 
 :root {
     --background-color: #363dc2; /* This is just an example value */
@@ -170,16 +171,15 @@ a:focus {
 }
 
 .content--layout {
-    display: grid;
-    gap: 1rem; /* Spacing between grid items */
-    grid-template-areas: 
-        "image title"
-        "image author"
-        "image desc"
-        "image link";
-    grid-template-columns: 1fr 2fr; /* Example column sizes */
+	pointer-events: auto;
+	justify-content: center;
+	align-content: center;
+	grid-template-columns: 200px 200px 200px 200px; 
+	grid-template-rows: 150px 75px 75px;
+	grid-template-areas:	"... title title title"
+							"author ... desc desc"
+							"author ... link link";
 }
-
 
 .content--related {
 	text-align: center;
@@ -197,7 +197,6 @@ a:focus {
 	opacity: 0.8;
 	width: 300px;
 	height: 300px;
-	grid-area: image;
 }
 
 .content__title {
@@ -284,20 +283,9 @@ a:focus {
 	padding: 0.5em;
 }
 
-@media (max-width: 768px) {
-    .content--layout {
-        grid-template-areas:
-            "image"
-            "title"
-            "author"
-            "desc"
-            "link";
-        grid-template-columns: 1fr; /* Stack elements on smaller screens */
-    }
-}
 /* Different layouts */
 
-layout-2
+/* layout-2 */
 .content--layout-2 {
 	grid-template-areas:	"... title title title"
 							"desc desc ... author"
@@ -461,54 +449,7 @@ layout-2
 	stroke: #22bcc0;
 }
 
-@media screen and (max-width: 50em) {
-	.content--fixed {
-		height: auto;
-		min-height: 0;
-		display: block;
-		z-index: 1000;
-		position: absolute;
-	}
-	.codrops-header {
-		align-items: center;
-		flex-direction: column;
-	}
-	.deco--title {
-		display: none;
-	}
-	.demos {
-		text-align: center;
-	}
-}
 
-@media screen and (max-width: 40em) {
-	.content--layout {
-		transform: scale3d(0.8,0.8,1);
-	}
-}
-
-@media screen and (max-width: 36em) {
-	.content--layout {
-		transform: scale3d(0.7,0.7,1);
-	}
-}
-
-@media screen and (max-width: 32em) {
-	.content--layout {
-		transform: scale3d(0.6,0.6,1);
-	}
-	.content__author,
-	.content__desc,
-	.content__link {
-		font-size: 1.35em;
-	}
-}
-
-@media screen and (max-width: 28em) {
-	.content--layout {
-		transform: scale3d(0.5,0.5,1);
-	}
-}
 
 .sidebar {
     position: fixed;
@@ -685,65 +626,92 @@ layout-2
   }
 
 
-
-  @media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .content-wrap {
-        flex-direction: column;
+        min-height: 400px;
     }
+}
 
-    .content {
-        display: flex;
-        flex-direction: column;
+@media (max-width: 480px) {
+    .content-wrap {
+        min-height: 300px;
     }
+}
 
+@media (max-width: 768px) {
     .content--fixed {
-        grid-template-columns: 1fr; /* Adjust layout for smaller screens */
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "header"
+            "decotitle"
+            "demos";
+    }
+}
+
+@media (max-width: 480px) {
+    .content--fixed {
         padding: 1em;
+        min-height: 300px;
     }
+}
 
+@media (max-width: 768px) {
     .content--layout {
-        grid-template-columns: 1fr; /* Adjust layout for smaller screens */
-    }
-
-    /* Adjust font sizes and element sizes as needed */
-    .content__title, .content__title__last {
-        font-size: 2.5em;
-        line-height: 1.2;
-    }
-
-    .content__author, .content__desc, .content__link {
-        font-size: 1em;
-    }
-
-    .codrops-header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .deco--title, .demos {
-        display: none; /* Hide or adjust elements not needed or not fitting on small screens */
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "title"
+            "author"
+            "desc"
+            "link";
     }
 }
 
 
-@media screen and (max-width: 480px) {
-    /* Further adjustments for very small screens */
-    .content__title, .content__title__last {
-        font-size: 1.8em;
-    }
-
-    /* Additional responsive adjustments as needed */
-}
-
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 75%;
+@media (max-width: 768px) {
+    .content--related {
+        min-height: 400px;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .sidebar {
-        width: 100%;
+@media (max-width: 480px) {
+    .content--related {
+        min-height: 300px;
+        font-size: 0.75em;
     }
 }
 
+@media (max-width: 480px) {
+    .content__img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content__title,
+    .content__title__last {
+        font-size: 4em;
+    }
+}
+
+@media (max-width: 480px) {
+    .content__title,
+    .content__title__last {
+        font-size: 3em;
+        line-height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content__related-title {
+        font-size: 0.85em;
+    }
+}
+
+.content__img,
+.content__title,
+.content__author,
+.content__desc {
+    transition: transform 0.3s ease-out;
+}

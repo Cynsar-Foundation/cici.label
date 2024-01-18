@@ -17,9 +17,8 @@ type ContentProps = {
 };
 
 export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, layoutType, imageAWSs3, onDiscoverClick }) => {
-
+    imgSrc = 'https://directus-bucket-jy.s3.us-east-1.amazonaws.com/47680a68-8ae6-4659-8f03-6c3a8e85a845.png'
     const imageUrl = isLocalDevelopment ? imgSrc : (imageAWSs3 ? `${awsS3Url}/${imageAWSs3.filename_disk}` : undefined);
-    
     const [isImageLoaded, setImageLoaded] = useState(false);
     const fadeIn = useSpring({
         opacity: isImageLoaded ? 1 : 0

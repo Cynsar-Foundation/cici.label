@@ -15,7 +15,7 @@ const ExtendedFooter = () => {
                 <a href="https://stories.cynsar.foundation">Stories</a>
                 <a href="https://shop.cicilabel.com/default-channel/pages/contact-us">Contact</a>
                 <a href="https://shop.cicilabel.com/default-channel/pages/terms-conditions-a-beautiful-agreement">Terms & Conditions</a>
-                <a href="https://shop.cicilabel.com/https://shop.cicilabel.com/default-channel/pages/terms-conditions-a-beautiful-agreement">Privacy Policy</a>
+                <a href="https://shop.cicilabel.com/default-channel/pages/terms-conditions-a-beautiful-agreement">Privacy Policy</a>
             </div>
             <div className="footer-copyright">
                 &copy; {new Date().getFullYear()} Cici Label and Jaal Yantra Textiles. All rights reserved.
