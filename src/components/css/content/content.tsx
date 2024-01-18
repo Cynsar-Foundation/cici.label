@@ -22,7 +22,6 @@ const ContentWrap: React.FC = () => {
     const status = useSelector((state: RootState) => state.directUs.status)
     const [isOpen, setIsOpen] = useState(false);
 
-    
     useEffect(() => {
         // Fetch the data from an API or receive it as props
         // For demonstration purposes, I'm using hardcoded data:
@@ -37,6 +36,7 @@ const ContentWrap: React.FC = () => {
 
     const handleDiscoverClick = (contentType: any) => {
         // so item.id = {}
+        // instead we could use from the store.
         // fetch the content from the API
         dispatch(fetchSidebarData(contentType.id))
         setIsOpen(true);  // Open the sidebar when the Discover button is clicked

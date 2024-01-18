@@ -641,29 +641,96 @@ a:focus {
 @media (max-width: 768px) {
     .content--fixed {
         grid-template-columns: 100%;
+		grid-template-rows: auto;
         grid-template-areas:
             "header"
             "decotitle"
             "demos";
+		padding: 1em;
     }
 }
 
 @media (max-width: 480px) {
     .content--fixed {
-        padding: 1em;
-        min-height: 300px;
+        padding: 0.5em;
+        min-height: 400px;
     }
 }
 
 @media (max-width: 768px) {
     .content--layout {
-        grid-template-columns: 100%;
-        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
         grid-template-areas:
             "title"
             "author"
             "desc"
             "link";
+    }
+}
+
+@media (max-width: 768px) {
+    .content--layout-2 {
+        grid-template-areas:
+            "title"
+            "desc"
+            "author"
+            "link";
+    }
+
+    .content--layout-2 .content__img {
+        grid-column: 3/ 5; /* Adjust grid column for single column layout */
+        grid-row: 1 / 3; /* Adjust grid row */
+    }
+
+    /* Adjust text alignment and positioning for smaller screens */
+    .content--layout-2 .content__desc {
+		text-align: right;
+	}
+    .content--layout-2 .content__link{
+		justify-self: end;
+	}
+    .content--layout-2 .content__author {
+        justify-self: end;
+        align-self: start;
+    }
+}
+
+@media (max-width: 768px) {
+    .content--layout-3 {
+		grid-template-rows: auto; 
+        grid-template-areas:
+            "title"
+            "desc"
+            "author"
+            "link";
+    }
+
+    .content--layout-3 .content__img {
+        grid-column: 1 / 3; /* Adjust for single column layout */
+		grid-row: 1 / 3;
+    }
+
+    .content--layout-3 .content__desc {
+        align-self: end; /* Adjust alignment for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .content--layout-4 {
+        grid-template-areas:
+            "title"
+            "author"
+            "desc"
+            "link";
+    }
+	.content--layout-4 .content__img {
+		grid-column: 1/ 4;
+		grid-row: 1/3;
+	}
+	.content--layout-4 .content__author {
+        justify-self: center; /* Center content */
+        align-self: start;
     }
 }
 
@@ -714,4 +781,31 @@ a:focus {
 .content__author,
 .content__desc {
     transition: transform 0.3s ease-out;
+}
+
+
+@media (max-width: 768px) {
+    .footer-links {
+        flex-direction: column; /* Stack links vertically */
+        gap: 10px; /* Reduce gap for smaller screens */
+    }
+
+    .footer-links a {
+        font-size: 1em; /* Increase font size for better readability */
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .footer {
+        padding: 15px 0; /* Adjust padding for very small screens */
+    }
+
+    .footer-links {
+        gap: 5px; /* Further reduce gap */
+    }
+
+    .footer-copyright {
+        font-size: 0.9em; /* Slightly larger font for readability */
+    }
 }
