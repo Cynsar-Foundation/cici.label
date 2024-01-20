@@ -21,6 +21,7 @@ const ContentWrap: React.FC = () => {
     const sidebarData = useSelector((state: RootState) => state.directUs.sideBarData);
     const status = useSelector((state: RootState) => state.directUs.status)
     const [isOpen, setIsOpen] = useState(false);
+    const [currentSidebarData, setSidebarData] = useState(sidebarData);
 
     useEffect(() => {
         // Fetch the data from an API or receive it as props
@@ -33,6 +34,12 @@ const ContentWrap: React.FC = () => {
         }
         
     }, [dispatch]);
+
+    useEffect(() => {
+        if (sidebarData) {
+            setSidebarData(sidebarData);
+        }
+    }, [sidebarData]);
 
     const handleDiscoverClick = (contentType: any) => {
         // so item.id = {}
@@ -55,13 +62,16 @@ const ContentWrap: React.FC = () => {
            {sortedContentData.map((item: any, index) => (
                 <Content onDiscoverClick={() => handleDiscoverClick(item)} key={index} {...item} />
             ))}
-            <Sidebar isOpen={isOpen} 
-            onClose={handleSidebarClose} 
-            title={sidebarData.title} 
-            subtitle={sidebarData.subTitle} 
-            paragraph={sidebarData.paragraph}
-            content={sidebarData.content}
-            status={status}/>
+            {isOpen && sidebarData && (
+                <Sidebar isOpen={isOpen} 
+                onClose={handleSidebarClose} 
+                title={sidebarData.title} 
+                subtitle={sidebarData.subTitle} 
+                paragraph={sidebarData.paragraph}
+                content={sidebarData.content}
+                status={status}/>
+            )}
+            
         </>
     );
 };

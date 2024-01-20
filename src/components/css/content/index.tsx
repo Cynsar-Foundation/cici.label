@@ -21,7 +21,7 @@ export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, l
     const imageUrl = isLocalDevelopment ? imgSrc : (imageAWSs3 ? `${awsS3Url}/${imageAWSs3.filename_disk}` : undefined);
     const [isImageLoaded, setImageLoaded] = useState(false);
     const fadeIn = useSpring({
-        opacity: isImageLoaded ? 1 : 0
+        opacity: isImageLoaded ? .7 : 0
     });
 
     return (
@@ -35,7 +35,7 @@ export const Content: React.FC<ContentProps> = ({ imgSrc, title, author, desc, l
                         style={fadeIn}
                         className="content__img" 
                         src={imageUrl} 
-                        alt="Some image" 
+                        alt="Home Page Images" 
                         onLoad={() => setImageLoaded(true)}
                     />
                 </>

@@ -23,7 +23,7 @@ export async function getServerSideProps(context: any) {
   let tags = websiteData ? websiteData.find((tag: TagType) => tag.item.page === 'index') : null;
   if (tags && tags.item && tags.item.favicon && tags.item.favicon.filename_disk){
     const awsS3BaseUrl = process.env.NEXT_PUBLIC_AWS_S3;
-    tags.item.favicon.url = `${awsS3BaseUrl}${tags.item.favicon.filename_disk}`
+    tags.item.favicon.url = `${awsS3BaseUrl + '/'}${tags.item.favicon.filename_disk}`
   }
   return {
     props: {

@@ -14,7 +14,6 @@ type SidebarProps = {
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,title, subtitle, paragraph, content, status }) => {
     const sidebarRef = useRef<HTMLDivElement | null>(null);
-
     useEffect(() => {
 
         const handleOutsideClick = (event: any) => {
@@ -58,8 +57,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose,title, subtitl
             {status === 'loading' && isOpen ? (
                 <div className="loader">Loading...</div>
             ) : (
-                <>
-                    <h2 className="title-sidebar max-width-2xl">{content}</h2>
+                <>  <p className='sidebar__title'>{paragraph}</p>
+                    <pre><p className="title-sidebar max-width-2xl">{content}</p></pre>
                     <h3 className="sidebar__subtitle">{subtitle}</h3>
                 </>
             )}
