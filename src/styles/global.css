@@ -476,6 +476,7 @@ a:focus {
     }
 }
 
+
 /* Responsive adjustments for mobile phones */
 @media (max-width: 480px) {
     .sidebar {
@@ -564,6 +565,13 @@ a:focus {
     .max-width-2xl {
         max-width: 95%; /* Use a percentage to ensure it fits smaller screens */
     }
+	.title-sidebar {
+		font-size: 2.1vh; /* Adjust as needed */
+		text-align: center;
+		color: #000;
+		font-family: 'nexa_boldregular';
+		
+	}
 }
 
 
